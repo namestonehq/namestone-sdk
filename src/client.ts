@@ -72,15 +72,25 @@ interface EnableDomainResponse {
   api_key: string;
 }
 
+interface NameStoneConfig {
+  network?: "sepolia";
+}
+
 class NameStone {
-  private baseUrl = "https://namestone.xyz/api/public_v1";
+  private baseUrl: string;
   private headers: Record<string, string>;
 
   /**
    * Creates a NameStone instance.
    * @param apiKey - NameStone API key for authentication.
+   * @param config - Configuration options for NameStone.
    */
-  constructor(apiKey?: string) {
+  constructor(apiKey?: string, config?: NameStoneConfig) {
+    this.baseUrl =
+      config?.network === "sepolia"
+        ? "https://namestone.xyz/api/public_v1_sepolia"
+        : "https://namestone.xyz/api/public_v1";
+
     this.headers = {
       "Content-Type": "application/json",
     };

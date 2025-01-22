@@ -1,6 +1,6 @@
 {
   "name": "namestone-sdk",
-  "version": "0.2.11",
+  "version": "0.2.13",
   "description": "A type-safe wrapper for the NameStone.xyz API",
   "exports": {
     ".": {
