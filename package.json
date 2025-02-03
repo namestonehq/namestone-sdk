@@ -1,6 +1,6 @@
 {
-  "name": "namestone-sdk",
-  "version": "0.2.13",
+  "name": "@namestone/namestone-sdk",
+  "version": "0.2.14",
   "description": "A type-safe wrapper for the NameStone.xyz API",
   "exports": {
     ".": {
@@ -14,7 +14,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "repository": {
-    "url": "git+https://github.com/ncale/namestone-sdk.git"
+    "url": "git+https://github.com/namestonehq/namestone-sdk.git"
   },
   "scripts": {
     "build": "tsup"
@@ -22,7 +22,7 @@
   "keywords": [
     "namestone"
   ],
-  "author": "resolverworks",
+  "author": "namestone",
   "license": "MIT",
   "devDependencies": {
     "prettier": "^3.3.3",

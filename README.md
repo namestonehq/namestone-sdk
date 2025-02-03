@@ -5,13 +5,13 @@ Type-safe SDK for interacting with the [NameStone](https://namestone.xyz/docs/) 
 ## Installation
 
 ```bash
-npm install namestone-sdk
+npm install @namestone/namestone-sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import NameStone from "namestone-sdk";
+import NameStone from "@namestone/namestone-sdk";
 
 // Initialize the client (API key optional for some methods)
 const ns = new NameStone("YOUR_API_KEY");
