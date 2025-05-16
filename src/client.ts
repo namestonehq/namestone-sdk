@@ -72,9 +72,9 @@ interface EnableDomainResponse {
   api_key: string;
 }
 
-interface NameStoneConfig {
-  network?: "sepolia";
-}
+type NameStoneConfig =
+  | { network: "sepolia"; baseUrl?: undefined }
+  | { network?: undefined; baseUrl: string };
 
 class NameStone {
   private baseUrl: string;
@@ -86,10 +86,16 @@ class NameStone {
    * @param config - Configuration options for NameStone.
    */
   constructor(apiKey?: string, config?: NameStoneConfig) {
-    this.baseUrl =
-      config?.network === "sepolia"
-        ? "https://namestone.xyz/api/public_v1_sepolia"
-        : "https://namestone.xyz/api/public_v1";
+    if (config?.baseUrl) {
+      // Set the global `baseUrl`, removing any trailing slashes. This takes precedence over the `network` setting.
+      this.baseUrl = config.baseUrl.replace(/\/$/, "");
+    } else if (config?.network === "sepolia") {
+      // If no `baseUrl` is provided, `network` is a shortcut to using the testnet path on the hosted API.
+      this.baseUrl = "https://namestone.com/api/public_v1_sepolia";
+    } else {
+      // If no config is provided, use the mainnet path on the hosted API.
+      this.baseUrl = "https://namestone.com/api/public_v1";
+    }
 
     this.headers = {
       "Content-Type": "application/json",
